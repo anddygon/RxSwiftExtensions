@@ -6,6 +6,8 @@
 //
 
 import RxSwift
+import Photos
+import UIKit
 
 public extension Observable {
     func mapVoid() -> Observable<Void> {
@@ -118,11 +120,67 @@ public extension Observable {
         }
     }
     
-    func showImagePicker(from viewController: UIViewController? = nil, config: ((UIImagePickerController) -> Void)? = nil, completion: (() -> Void)? = nil) -> Observable<[UIImagePickerController.InfoKey: Any]> {
-        return self
+    func showImagePicker(sourceType: UIImagePickerController.SourceType, from viewController: UIViewController? = nil, autoRequestAuthorization: Bool = true, config: ((UIImagePickerController) -> Void)? = nil, completion: (() -> Void)? = nil) -> Observable<[UIImagePickerController.InfoKey: Any]> {
+        let authObservable: Observable<Void>
+        let accessDenied = NSError(domain: "com.rxextensions.showImagePicker", code: -1000, userInfo: [NSLocalizedDescriptionKey: "access denied"])
+        let unknownError = NSError(domain: "com.rxextensions.showImagePicker", code: -2000, userInfo: [NSLocalizedDescriptionKey: "not support sourceType"])
+        
+        switch sourceType {
+        case .camera:
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .notDetermined:
+                if autoRequestAuthorization {
+                    authObservable = Observable<Void>.create { (observer) -> Disposable in
+                        AVCaptureDevice.requestAccess(for: .video, completionHandler: { (isAuth) in
+                            if isAuth {
+                                observer.onNext(())
+                                observer.onCompleted()
+                            } else {
+                                observer.onError(accessDenied)
+                            }
+                        })
+                        return Disposables.create()
+                    }
+                } else {
+                    authObservable = .error(accessDenied)
+                }
+            case .authorized:
+                authObservable = .justVoid()
+            default:
+                authObservable = .error(accessDenied)
+            }
+        case .photoLibrary, .savedPhotosAlbum:
+            switch PHPhotoLibrary.authorizationStatus() {
+            case .notDetermined:
+                if autoRequestAuthorization {
+                    authObservable = Observable<Void>.create { (observer) -> Disposable in
+                        PHPhotoLibrary.requestAuthorization({ (status) in
+                            if status == .authorized {
+                                observer.onNext(())
+                                observer.onCompleted()
+                            } else {
+                                observer.onError(accessDenied)
+                            }
+                        })
+                        return Disposables.create()
+                    }
+                } else {
+                    authObservable = .error(accessDenied)
+                }
+            case .authorized:
+                authObservable = .justVoid()
+            default:
+                authObservable = .error(accessDenied)
+            }
+        @unknown default:
+            authObservable = .error(unknownError)
+        }
+        
+        return authObservable
             .observeOn(MainScheduler.instance)
             .flatMapLatest { (_) -> Observable<[UIImagePickerController.InfoKey: Any]> in
                 let vc = UIImagePickerController.init()
+                vc.sourceType = sourceType
                 config?(vc)
                 let presentingVC = viewController ?? __rootViewController
                 presentingVC.present(vc, animated: true, completion: completion)

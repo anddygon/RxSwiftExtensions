@@ -9,21 +9,21 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Photos
 import RxSwiftExtensions
 
 class ViewController: UIViewController {
     @IBOutlet weak var alertButton: UIButton!
     @IBOutlet weak var actionSheetButton: UIButton!
     @IBOutlet weak var imagePickerButton: UIButton!
+    private var hasInvoked = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Disposables.create([
                 showAlert(),
                 showActionSheet(),
-                showImagePicker(),
                 observeProperty(),
                 observeWeaklyProperty()
             ])
@@ -64,7 +64,7 @@ extension ViewController {
     func showImagePicker() -> Disposable {
         return imagePickerButton.rx.tap
             .asObservable()
-            .showImagePicker(config: configImagePicker, completion: imagePickerDidShowCompletion)
+            .showImagePicker(sourceType: .photoLibrary, config: configImagePicker, completion: imagePickerDidShowCompletion)
             .map({ $0[.editedImage] as! UIImage })
             .map(UIColor.init(patternImage: ))
             .bind(to: view.rx.backgroundColor)
