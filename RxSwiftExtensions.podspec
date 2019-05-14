@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'RxSwiftExtensions'
-s.version          = '0.1.0'
+s.version          = '0.2.0'
 s.summary          = 'Extension for rxswift.'
 
 # This description is used to generate tags and improve search results.
@@ -30,9 +30,9 @@ s.source           = { :git => 'https://github.com/anddygon/RxSwiftExtensions.gi
 
 s.requires_arc          = true
 
-s.ios.deployment_target = '8.0'
+s.ios.deployment_target = '9.0'
 
-s.source_files = 'RxSwiftExtensions/Classes/**/*'
+s.source_files = 'Classes/**/*'
 
 # s.resource_bundles = {
 #   'RxSwiftExtensions' => ['RxSwiftExtensions/Assets/*.png']
@@ -40,7 +40,10 @@ s.source_files = 'RxSwiftExtensions/Classes/**/*'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
-s.dependency 'RxSwift', '~> 5.0.0'
+ s.dependency 'RxSwift', '~> 5.0.0'
+ s.dependency 'RxCocoa', '~> 5.0.0'
+ s.dependency 'RxOptional', '~> 4.0.0'
+ s.dependency 'RxDataSources', '~> 4.0.0'
 
 s.swift_version = '5.0'
 

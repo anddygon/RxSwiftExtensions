@@ -15,7 +15,7 @@ public extension Reactive where Base: UIImagePickerController {
         return RxImagePickerDelegateProxy.proxy(for: base)
     }
     
-    private var _selected: Observable<[UIImagePickerController.InfoKey : Any]> {
+    var info: Observable<[UIImagePickerController.InfoKey : Any]> {
         let selector = #selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:))
         return _delegate.methodInvoked(selector)
             .map({ $0[1] as! [UIImagePickerController.InfoKey : Any] })
@@ -27,12 +27,12 @@ public extension Reactive where Base: UIImagePickerController {
     }
     
     var selectedEditedImage: Observable<UIImage> {
-        return _selected
+        return info
             .map({ $0[.editedImage] as! UIImage })
     }
     
     var selectedOriginalImage: Observable<UIImage> {
-        return _selected
+        return info
             .map({ $0[.originalImage] as! UIImage })
     }
 }

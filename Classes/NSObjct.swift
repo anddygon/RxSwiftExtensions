@@ -9,8 +9,8 @@ import Foundation
 
 private var disposeBagContext: UInt8 = 0
 
-extension NSObject {
-    public var bag: DisposeBag {
+public extension NSObject {
+    var bag: DisposeBag {
         get {
             return synchronizedBag {
                 if let disposeObject = objc_getAssociatedObject(self, &disposeBagContext) as? DisposeBag {
