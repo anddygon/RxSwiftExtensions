@@ -4,8 +4,7 @@ source 'https://www.github.com/CocoaPods/Specs.git'
 source 'https://www.github.com/anddygon/spec_repo.git'
 
 target 'RxSwiftExtensions_Example' do
-#  pod 'RxSwiftExtensions', :path => '../'
-  pod "RxSwiftExtensions"
+  pod 'RxSwiftExtensions', :path => '../'
 
   target 'RxSwiftExtensions_Tests' do
     inherit! :search_paths

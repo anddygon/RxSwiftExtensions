@@ -1,37 +1,49 @@
 PODS:
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxOptional (3.6.2):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.5.0)
-  - RxSwiftExtensions (1.2.3):
-    - RxCocoa (~> 4.3)
-    - RxOptional (~> 3.5)
-    - RxSwift (~> 4.3)
-    - RxViewController
-  - RxViewController (0.4.1):
-    - RxCocoa (>= 4.0.0)
-    - RxSwift (>= 4.0.0)
+  - Differentiator (4.0.1)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxOptional (4.0.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - RxSwiftExtensions (0.2.0):
+    - RxCocoa (~> 5.0.0)
+    - RxDataSources (~> 4.0.0)
+    - RxOptional (~> 4.0.0)
+    - RxSwift (~> 5.0.0)
 
 DEPENDENCIES:
-  - RxSwiftExtensions
+  - RxSwiftExtensions (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Differentiator
     - RxCocoa
+    - RxDataSources
     - RxOptional
+    - RxRelay
     - RxSwift
-    - RxSwiftExtensions
-    - RxViewController
+
+EXTERNAL SOURCES:
+  RxSwiftExtensions:
+    :path: "../"
 
 SPEC CHECKSUMS:
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  RxSwiftExtensions: 432072bdd6e959d914c7ff0ce99302a46b01fba2
-  RxViewController: e93e7c233d5b5b62c32231d69726d55f54081bc6
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxOptional: 9904e2219d59260c3c171273d475b2126de187e8
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  RxSwiftExtensions: 68e2d3e0d7c5e9105163d7c011d42db9b5ed754b
 
-PODFILE CHECKSUM: 3fcbdcee5d6f94623d522e5ac97e00483fde9195
+PODFILE CHECKSUM: 4b381a504a3022351a6f00795efca027a653f4dd
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.0.rc.1

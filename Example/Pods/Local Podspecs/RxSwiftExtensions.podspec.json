@@ -1,6 +1,6 @@
 {
   "name": "RxSwiftExtensions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "Extension for rxswift.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/anddygon/RxSwiftExtensions",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/anddygon/RxSwiftExtensions.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "requires_arc": true,
   "platforms": {
@@ -34,5 +34,5 @@
       "~> 4.0.0"
     ]
   },
-  "swift_version": "5.0"
+  "swift_versions": "5.0"
 }
