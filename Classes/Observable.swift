@@ -27,7 +27,7 @@ public extension Observable {
 }
 
 private var __rootViewController: UIViewController {
-    return UIApplication.shared.keyWindow?.subviews.first?.next as! UIViewController
+    return UIApplication.shared.keyWindow!.rootViewController!
 }
 
 public extension Observable {
