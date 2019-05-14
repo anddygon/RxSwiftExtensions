@@ -10,7 +10,7 @@ public protocol Occupiable {
 }
 
 public extension Occupiable {
-    var isNotEmpty: Bool {
+    public var isNotEmpty: Bool {
         return !isEmpty
     }
 }
