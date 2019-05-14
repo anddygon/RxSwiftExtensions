@@ -1,22 +1,38 @@
 {
   "name": "RxSwiftExtensions",
   "version": "0.1.0",
-  "summary": "A short description of RxSwiftExtensions.",
+  "summary": "Extension for rxswift.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/xiaop/RxSwiftExtensions",
+  "homepage": "https://github.com/anddygon/RxSwiftExtensions",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "xiaop": "gongxiaopeng@apusapps.com"
+    "anddygon": "anddygon@gmail.com"
   },
   "source": {
-    "git": "https://github.com/xiaop/RxSwiftExtensions.git",
+    "git": "https://github.com/anddygon/RxSwiftExtensions.git",
     "tag": "0.1.0"
   },
+  "requires_arc": true,
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
-  "source_files": "RxSwiftExtensions/Classes/**/*"
+  "source_files": "Classes/**/*",
+  "dependencies": {
+    "RxSwift": [
+      "~> 5.0.0"
+    ],
+    "RxCocoa": [
+      "~> 5.0.0"
+    ],
+    "RxOptional": [
+      "~> 4.0.0"
+    ],
+    "RxDataSources": [
+      "~> 4.0.0"
+    ]
+  },
+  "swift_version": "5.0"
 }
