@@ -1,0 +1,22 @@
+{
+  "name": "RxSwiftExtensions",
+  "version": "0.1.0",
+  "summary": "A short description of RxSwiftExtensions.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/xiaop/RxSwiftExtensions",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "xiaop": "gongxiaopeng@apusapps.com"
+  },
+  "source": {
+    "git": "https://github.com/xiaop/RxSwiftExtensions.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "RxSwiftExtensions/Classes/**/*"
+}
