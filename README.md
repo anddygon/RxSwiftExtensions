@@ -22,7 +22,7 @@ pod 'RxSwiftExtensions'
 
 ## Author
 
-xiaop, gongxiaopeng@apusapps.com
+anddygon, anddygon@gmail.com
 
 ## License
 
